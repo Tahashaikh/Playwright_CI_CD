@@ -31,7 +31,10 @@ jobs:
     - name: Install playwright
       run: |
         python -m pip install pytest-playwright
-        pyton -m playwright install
+        python -m pip install playwright
+    - name: Install playwright Browser
+      run: |
+        python -m playwright install
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -40,4 +43,5 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest
+        pytest .\Login.py --headed 
+
