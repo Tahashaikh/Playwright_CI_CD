@@ -31,7 +31,6 @@ jobs:
     - name: Install playwright
       run: |
         python -m pip install pytest-playwright
-        python -m pip install playwright
     - name: Install playwright Browser
       run: |
         python -m playwright install
