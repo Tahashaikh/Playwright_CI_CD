@@ -8,14 +8,19 @@ pipeline {
 
     stages {
         stage('e2e-tests') {
+            agent {
+                docker {
+                    // Specify the Docker image
+                    image 'mcr.microsoft.com/playwright/python:v1.40.0-jammy'
+                    // Additional Docker configurations if needed
+                }
+            }
+
             steps {
                 script {
-                    // Run your Docker command or other steps here
+                    // Run pip install and pytest within the Docker container
                     echo "Running in workspace: ${WORKSPACE}"
-                    docker.image('mcr.microsoft.com/playwright/python:v1.40.0-jammy').inside("-v ${WORKSPACE}:/app -w /app") {
-                        sh 'pip install -r requirements.txt'
-                        sh 'pytest'
-                    }
+                    bat "docker run -v ${WORKSPACE}:/app -w /app mcr.microsoft.com/playwright/python:v1.40.0-jammy sh -c 'pip install -r requirements.txt && pytest'"
                 }
             }
         }
