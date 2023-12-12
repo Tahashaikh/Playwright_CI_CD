@@ -1,22 +1,24 @@
 pipeline {
     agent any
 
-    environment {
-        WORKSPACE = pwd()
-    }
-
     stages {
-        stage('e2e-tests') {
-            agent {
-                docker {
-                    image 'mcr.microsoft.com/playwright/python:v1.40.0-jammy'
-                }
-            }
-
+        stage('Build Docker Image') {
             steps {
                 script {
-                    echo "Running in workspace: ${WORKSPACE}"
-                    sh 'cd /app && pip install -r requirements.txt && pytest'
+                    // Clone the Git repository
+                    checkout scm
+
+                    // Build the Docker image
+                    sh 'docker build -t my-playwright-test .'
+                }
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    // Run the Docker container
+                    sh 'docker run my-playwright-test'
                 }
             }
         }
