@@ -10,7 +10,7 @@ pipeline {
                         checkout scm
 
                         // Build the Docker image
-                        bat 'docker build -t my-playwright-test .'
+                        sh 'docker build -t my-playwright-test .'
                     } catch (Exception buildError) {
                         echo "Error building Docker image: ${buildError.message}"
                         error "Failed to build Docker image"
@@ -24,7 +24,7 @@ pipeline {
                 script {
                     try {
                         // Run the Docker container
-                        bat 'docker run my-playwright-test'
+                        sh 'docker run my-playwright-test'
                     } catch (Exception runError) {
                         echo "Error running Docker container: ${runError.message}"
                         error "Failed to run Docker container"
