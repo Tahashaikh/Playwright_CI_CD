@@ -29,7 +29,7 @@ pipeline {
                         echo "Error running Docker container: ${runError.message}"
                         error "Failed to run Docker container"
                     }
-                }
+                }`
             }
         }
     }
