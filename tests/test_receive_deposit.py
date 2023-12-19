@@ -1,6 +1,8 @@
 import os
 import pytest
 from playwright.sync_api import Page
+
+from pages.NewLoginPage import NewLoginPage
 from pages.login_page import LoginPage
 from pages.receive_deposit_page import ReceiveDepositPage
 from pages.teller_page import TellerPage
@@ -68,3 +70,8 @@ def test_ReceiveDeposit_CreditVoucher_CustomerAccount_Authorizer(page: Page):
     login_page.login_R2BCBS(access_data.Branch_Code, access_data.Authorizer, access_data.Password)
     transaction_security.transaction_security()
     logout_page.logout_R2BCBS()
+
+def test_DemoTest(page: Page):
+    newloginpage = NewLoginPage(page)
+    newloginpage.goto()
+    newloginpage.login_sauce()
