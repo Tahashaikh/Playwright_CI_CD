@@ -24,7 +24,7 @@ pipeline {
                 script {
                     try {
                         // Run the Docker container in detached mode
-                        bat 'docker run -d my-playwright-test'
+                        bat 'docker run -t my-playwright-test'
                     } catch (Exception runError) {
                         echo "Error running Docker container: ${runError.message}"
                         error "Failed to run Docker container"
