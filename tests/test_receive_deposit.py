@@ -1,3 +1,4 @@
+import os
 import pytest
 from playwright.sync_api import Page
 from pages.login_page import LoginPage
@@ -7,6 +8,7 @@ from pages.transaction_security_page import TransactionSecurity
 from testdata.data_set2 import TestData as access_data
 from pages.logout_page import LogoutPage
 
+#os.environ["SELENIUM_REMOTE_URL"] = "http://10.90.25.64:4444"
 
 # @pytest.mark.parametrize("login_R2BCBS", [{
 #     "branch_code": data.Branch_Code,
@@ -36,9 +38,8 @@ from pages.logout_page import LogoutPage
 #     transaction_security.transaction_security()
 #     #logout_page.logout_R2BCBS()
 
-
+@pytest.mark.skip("Only Run in R2 Environment")
 def test_ReceiveDeposit_CreditVoucher_CustomerAccount(page: Page):
-
     # reference objects
     login_page = LoginPage(page)
     logout_page = LogoutPage(page)
@@ -56,8 +57,8 @@ def test_ReceiveDeposit_CreditVoucher_CustomerAccount(page: Page):
     logout_page.logout_R2BCBS()
 
 
+@pytest.mark.skip("Only Run in R2 Environment")
 def test_ReceiveDeposit_CreditVoucher_CustomerAccount_Authorizer(page: Page):
-
     # reference objects
     login_page = LoginPage(page)
     logout_page = LogoutPage(page)
