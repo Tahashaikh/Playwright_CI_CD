@@ -23,8 +23,8 @@ pipeline {
             steps {
                 script {
                     try {
-                        // Run the Docker container with PowerShell
-                        bat 'docker run my-playwright-test'
+                        // Run the Docker container in detached mode
+                        bat 'docker run -d my-playwright-test'
                     } catch (Exception runError) {
                         echo "Error running Docker container: ${runError.message}"
                         error "Failed to run Docker container"
