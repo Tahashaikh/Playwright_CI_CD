@@ -1,0 +1,13 @@
+class TestData:
+    Staging_URL = "https://staging.bahl-habits.org/"
+    Branch_Code = "1001"
+    Poster = "VDQATST1"
+    Authorizer = "VDQAAUTH1"
+    Password = "login11111"
+    Customer_Number = "192069"
+    Account_Number = "0081192069017"
+    Amount = "50001"
+    Document_Number = "123456"
+    Narration1 = "Test1"
+    Narration2 = "Test2"
+    Narration3 = "Test3"
