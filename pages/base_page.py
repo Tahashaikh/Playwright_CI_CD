@@ -117,3 +117,4 @@ class BasePage:
     def attach_video_to_allure(self, step_name: str = "Complete Test Case Video"):
         with allure.step(step_name):
             allure.attach.file(self.page.video.path(), attachment_type=allure.attachment_type.WEBM)
+            print("PATH TO VIDEO:"+self.page.video.path())

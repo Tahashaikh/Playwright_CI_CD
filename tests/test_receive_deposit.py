@@ -10,7 +10,8 @@ from pages.transaction_security_page import TransactionSecurity
 from testdata.data_set2 import TestData as access_data
 from pages.logout_page import LogoutPage
 
-#os.environ["SELENIUM_REMOTE_URL"] = "http://10.90.25.64:4444"
+
+# os.environ["SELENIUM_REMOTE_URL"] = "http://10.90.25.64:4444"
 
 # @pytest.mark.parametrize("login_R2BCBS", [{
 #     "branch_code": data.Branch_Code,
@@ -71,7 +72,9 @@ def test_ReceiveDeposit_CreditVoucher_CustomerAccount_Authorizer(page: Page):
     transaction_security.transaction_security()
     logout_page.logout_R2BCBS()
 
+
 def test_DemoTest(page: Page):
     newloginpage = NewLoginPage(page)
     newloginpage.goto()
     newloginpage.login_sauce()
+    newloginpage.logout_sauce()
