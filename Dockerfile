@@ -18,4 +18,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN pip list
 
 # Define the command to run when the container starts
-RUN pytest Login.py
+RUN pytest
