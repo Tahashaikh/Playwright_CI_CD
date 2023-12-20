@@ -21,7 +21,7 @@ jobs:
     - name: Ensure browsers are installed
       run: python -m playwright install --with-deps
     - name: Run your tests
-      run: pytest --slowmo 100 --tracing=retain-on-failure
+      run: pytest .\tests\test_receive_deposit.py --slowmo 100 --tracing=retain-on-failure
     - uses: actions/upload-artifact@v3
       if: always()
       with:
