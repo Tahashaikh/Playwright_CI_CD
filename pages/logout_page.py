@@ -15,5 +15,3 @@ class LogoutPage(BasePage):
         self.get_text_and_click(self._modal_message, self._ok_button, "Are You Sure, You Want To Sign Off!")
         self.print_message("Logout Successful")
         self.attach_video_to_allure()
-
-
