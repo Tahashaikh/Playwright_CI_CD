@@ -1,7 +1,18 @@
 from datetime import datetime
-
+import pandas
 import allure
 from playwright.sync_api import Page
+
+
+def get_data_from_file(file_path, sheet_name='Sheet1'):
+
+    if file_path.endswith('.csv'):
+        df = pandas.read_csv(file_path)
+    elif file_path.endswith(('.xls', '.xlsx')):
+        df = pandas.read_excel(file_path, sheet_name)
+    else:
+        raise ValueError("Unsupported file format. Please provide a CSV or Excel file.")
+    return df
 
 
 class BasePage:

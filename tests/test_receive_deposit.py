@@ -3,6 +3,7 @@ import pytest
 from playwright.sync_api import Page
 
 from pages.NewLoginPage import NewLoginPage
+from pages.base_page import get_data_from_file
 from pages.login_page import LoginPage
 from pages.receive_deposit_page import ReceiveDepositPage
 from pages.teller_page import TellerPage
@@ -73,8 +74,12 @@ def test_ReceiveDeposit_CreditVoucher_CustomerAccount_Authorizer(page: Page):
     logout_page.logout_R2BCBS()
 
 
-def test_DemoTest(page: Page):
+@pytest.mark.parametrize("username, password", get_data_from_file('testdata/test.xlsx','Sheet3').itertuples(index=False, name=None))
+def test_DemoTest(page: Page, username , password):
+    print(username, password)
     newloginpage = NewLoginPage(page)
     newloginpage.goto()
-    newloginpage.login_sauce()
+    newloginpage.login_sauce(username, password)
     newloginpage.logout_sauce()
+
+
